@@ -12,6 +12,7 @@ nlp = spacy.load("en_core_web_sm")
 def modify_query(query, degrees):
     doc = nlp(query)
     
+    # Only translate relevant words
     content_words = [token.text for token in doc if token.pos_ in ["NOUN", "VERB", "ADJ"]]
     
     if not content_words:
@@ -34,9 +35,9 @@ def modify_query(query, degrees):
 
     return modified_query
 
-# Clean the queries to remove or escape special characters
+# Clean the queries to remove or escape special characters (get added by translation sometimes and gives error when retrieving)
 def clean_query(query):
-    query = re.sub(r"[^\w\s]", "", query)  # Remove non-alphanumeric characters, keep accented ones
+    query = re.sub(r"[^\w\s]", "", query) 
     return query
 
 # Apply the translations, modify degrees for amount of words to change

@@ -2,6 +2,7 @@ import pyterrier as pt
 import pandas as pd
 
 # Run Experiments
+# Make sure you have the relevant modified queries in the correct folder when running this.
 dataset = pt.get_dataset("msmarco_passage")
 
 bm25 = pt.BatchRetrieve.from_dataset('msmarco_passage', 'terrier_stemmed', wmodel='BM25')
@@ -9,9 +10,8 @@ pl2 = pt.BatchRetrieve.from_dataset('msmarco_passage', 'terrier_stemmed', wmodel
 tfidf = pt.BatchRetrieve.from_dataset('msmarco_passage', 'terrier_stemmed', wmodel='TF_IDF')
 dph = pt.BatchRetrieve.from_dataset('msmarco_passage', 'terrier_stemmed', wmodel='DPH')
 dirichletLM = pt.BatchRetrieve.from_dataset('msmarco_passage', 'terrier_stemmed', wmodel='DirichletLM')
-code_switched_queries = pd.read_parquet("modified_queries_2.parquet")
-code_switched_queries = pd.read_parquet("modified_queries_3.parquet")
-code_switched_queries = pd.read_parquet("modified_queries_1.parquet")
+
+code_switched_queries = pd.read_parquet("./modified_queries/modified_queries_1.parquet")
 print("Regular queries: \n")
 print(pt.Experiment(
     [bm25, pl2, tfidf, dph, dirichletLM],
@@ -34,7 +34,7 @@ print(pt.Experiment(
     save_mode="overwrite"
 ))
 
-code_switched_queries = pd.read_parquet("modified_queries_2.parquet")
+code_switched_queries = pd.read_parquet("./modified_queries/modified_queries_2.parquet")
 print("Two code switched words: \n")
 print(pt.Experiment(
     [bm25, pl2, tfidf, dph, dirichletLM],
@@ -46,7 +46,7 @@ print(pt.Experiment(
     save_mode="overwrite"
 ))
 
-code_switched_queries = pd.read_parquet("modified_queries_3.parquet")
+code_switched_queries = pd.read_parquet("./modified_queries/modified_queries_3.parquet")
 print("Three code switched words: \n")
 print(pt.Experiment(
     [bm25, pl2, tfidf, dph, dirichletLM],

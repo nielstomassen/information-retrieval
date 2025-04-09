@@ -2,6 +2,7 @@ import pyterrier as pt
 import shutil
 import os
 
+# Was used temporarily because data.pyterrier.org was down. No longer used.
 dataset = pt.get_dataset("msmarco_passage")
 # Define where to store the index
 index_path = "./msmarco_index"
