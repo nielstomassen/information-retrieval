@@ -1,5 +1,4 @@
 import pyterrier as pt
-import pandas as pd
 import shutil
 import os
 
