@@ -1,5 +1,5 @@
 # information-retrieval code switching retrieval experiments
-This is the GitHub repository for evaluation retrieval performance under various degrees of code switching.
+This is the GitHub repository for evaluating retrieval performance under various degrees of code switching.
 
 ## How to Run
 
